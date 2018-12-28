@@ -1,0 +1,69 @@
+C++°æ±¾
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode * result = new ListNode(0);
+        ListNode * tmp = result;
+        int sum=0;
+        while (l1 || l2){
+            if (l1){
+                sum += l1->val;
+                l1 = l1->next;
+            }
+            if (l2){
+                sum += l2->val;
+                l2 = l2->next;
+            }
+            tmp->next = new ListNode(sum%10);
+            sum /= 10;
+            tmp = tmp->next;
+            
+        }
+        if (sum){
+            tmp->next = new ListNode(1);
+        }
+        return result->next;
+
+    }
+};
+
+Python°æ±¾
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        sum = 0
+        result = ListNode(0);
+        tmp = result;
+        while (l1 or l2):
+            if (l1):
+                sum += l1.val;
+                l1 = l1.next;
+            if (l2):
+                sum += l2.val;
+                l2 = l2.next;
+            tmp.next = ListNode(sum%10);
+            sum //= 10;
+            tmp = tmp.next;
+        if (sum):
+            tmp.next = ListNode(1);
+        return result.next;
+
