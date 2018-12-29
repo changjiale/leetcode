@@ -1,0 +1,35 @@
+C++°æ±¾
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> res;
+        for(int i=0; i<nums.size(); i++)
+        {
+            for (int j=i+1; j<nums.size(); j++)
+            {
+                if(nums[i]+nums[j]==target)
+                {
+                    res.push_back(i);
+                    res.push_back(j);
+                }  
+            }
+        }
+        return res;
+    }
+};
+
+
+Python°æ±¾
+
+class Solution:
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for i in range(len(nums)):  
+            j = target-nums[i];
+            if (j in nums and i!=nums.index(j)):
+                return [i, nums.index(j)]
+                break
