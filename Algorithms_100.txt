@@ -1,0 +1,59 @@
+C++°æ±¾
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if (p==NULL&&q==NULL)
+            return true;
+        else if (p==NULL||q==NULL)
+            return false;
+        else if (p->val==q->val)
+        {
+            bool left = isSameTree(p->left,q->left);
+            bool right = isSameTree(p->right,q->right);
+            return (left&&right);
+        }
+        else 
+        {
+            return false;
+        }
+        
+        
+    }
+};
+
+
+Python°æ±¾
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        if (p == None and q == None):
+            return True;
+        elif (p == None or q == None):
+            return False;
+        elif (p.val == q.val):
+            left = self.isSameTree(p.left, q.left);
+            right = self.isSameTree(p.right, q.right);
+            return (left and right)
+        else :
+            return False;
